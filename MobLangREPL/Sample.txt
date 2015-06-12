@@ -1,0 +1,51 @@
+﻿data Tree a
+  case Leaf
+  case Node of (Tree a) a (Tree a)
+
+def fst (x, _) as x
+
+def snd (_, x) as x
+
+def compute tree as
+  snd (def aux tree as
+    match tree
+      with Leaf then (0, Leaf)
+      with (Node l _ r) then
+        match (aux l, aux r)
+          with ((hl, rl), (hr, rr)) if hl > hr then (hl + 1, Node rl (hl + 1) rr)
+          with ((_, rl), (hr, rr)) then (hr + 1, Node rl (hr + 1) rr)
+    in aux tree)
+
+compute (Node Leaf () (Node Leaf () Leaf))
+
+def fact n as
+  if n == 0 then
+     1
+  else
+     n * fact (n - 1)
+
+def bottom as bottom
+
+def cond x y z as if x then y else z
+
+def partial as cond (fact 4 == 24)
+
+partial 42 bottom
+
+data List a
+   case Nil
+   case Cons of a (List a)
+
+def length list as
+  match list
+    with Nil then 0
+    with (Cons _ rest) then 1 + length rest
+
+def map f list as
+	match list
+		with Nil then Nil
+		with (Cons x xs) then Cons (f x) (map f xs)
+
+length Nil
+
+map (fun x as 5 * x) (Cons 5 (Cons 7 Nil))

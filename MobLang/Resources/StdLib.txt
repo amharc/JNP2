@@ -1,0 +1,132 @@
+def operator $ f x as f x
+
+def operator @ f g x as f (g x)
+
+def flip f x y as f y x
+
+def fst (x, _) as x
+
+def snd (_, x) as x
+
+data List a
+	case Nil
+	case Cons of a (List a)
+
+def operator :: x as Cons x
+
+def head (Cons x _) as x
+
+def tail (Cons _ x) as x
+
+def flip f x y as f y x
+
+def map f list as
+	match list
+		with Nil then Nil 
+		with Cons x xs then f x :: map f xs
+
+def foldl f initial list as
+	match list
+		with Nil then initial
+		with Cons x xs then foldl f (f initial x) xs
+
+def foldr f initial list as
+	match list
+		with Nil then initial
+		with Cons x xs then f x (foldr f initial xs)
+
+def length as foldl (fun x _ as x + 1) 0
+
+def filter f list as
+	match list
+		with Nil then Nil
+		with Cons x xs if f x then Cons x (filter f xs)
+		with Cons _ xs then filter f xs
+
+def operator & x y as if x then y else False
+
+def operator | x y as if x then True else y
+
+def not x as if x then False else True
+
+def xor x y as if x then not y else y
+
+def replicate n x as
+	if n == 0 then
+		Nil
+	else
+		x :: replicate (n - 1) x
+
+def repeat x as x :: repeat x
+
+def take n list as
+	if n == 0 then
+		Nil
+	else
+		match list
+			with Cons x xs then x :: take (n - 1) xs
+
+def drop n list as
+	if n == 0 then list
+	else drop (n - 1) (tail list)
+
+def operator ++ xs ys as
+	match xs
+		with Nil then ys
+		with Cons x xs then x :: xs ++ ys
+
+def id x as x
+
+def iterate f x as x :: iterate f (f x)
+
+def reverse list as
+	def rev list a as
+		match list
+			with Nil then a
+			with Cons x xs then rev xs (x :: a)
+	in rev list []
+
+def cycle xs as
+	def res as xs ++ res
+	in res
+
+def any p list as
+	match list
+		with Nil then False
+		with Cons x xs then p x | any p xs
+
+def all p list as
+	match list
+		with Nil then True
+		with Cons x xs then p x & all p xs
+
+def elem x as any (operator == x)
+
+def concat l as foldr (operator++) [] l
+
+def concatMap f as foldr ((operator++) @ f) []
+
+data Maybe a
+	case Nothing
+	case Just of a
+
+data Either a b
+	case Left of a
+	case Right of b
+
+def zipWith f list1 list2 as
+	match (list1, list2)
+		with ((Cons x xs), (Cons y ys)) then Cons (f x y) (zipWith f xs ys)
+		with _ then Nil
+
+def zip list1 list2 as zipWith (fun x y as (x, y)) list1 list2
+
+def operator !! list n as
+	if n == 0 then
+		head list
+	else
+		tail list !! (n - 1)
+
+def fix f as
+	def x as f x
+	in x

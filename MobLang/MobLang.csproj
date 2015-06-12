@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC9A6153-F3D1-4FE5-B1FF-2ED4B28CBDB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MobLang</RootNamespace>
+    <AssemblyName>MobLang</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile151</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Content Include="Resources\DataStructures.txt" />
+    <None Include="packages.config" />
+    <None Include="Resources\StdLib.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\BottomException.cs" />
+    <Compile Include="Exceptions\DataTypeException.cs" />
+    <Compile Include="Exceptions\FunctionValueComparisonException.cs" />
+    <Compile Include="Exceptions\IllegalCharacterException.cs" />
+    <Compile Include="Exceptions\InvalidCharStringLiteralException.cs" />
+    <Compile Include="Exceptions\OccursCheckException.cs" />
+    <Compile Include="Exceptions\ParserException.cs" />
+    <Compile Include="Exceptions\PatternArgumentCountException.cs" />
+    <Compile Include="Exceptions\RigidTypeException.cs" />
+    <Compile Include="Exceptions\SafeStackOverflowException.cs" />
+    <Compile Include="Exceptions\StackedException.cs" />
+    <Compile Include="Exceptions\TypeException.cs" />
+    <Compile Include="Exceptions\UnboundNameException.cs" />
+    <Compile Include="Exceptions\UnsuccessfulMatchException.cs" />
+    <Compile Include="Interpreter\ApplicationValue.cs" />
+    <Compile Include="Interpreter\BottomValue.cs" />
+    <Compile Include="Interpreter\CharacterValue.cs" />
+    <Compile Include="Interpreter\DataConstructor.cs" />
+    <Compile Include="Interpreter\DataValue.cs" />
+    <Compile Include="Interpreter\Defaults.cs" />
+    <Compile Include="Interpreter\Environment.cs" />
+    <Compile Include="Interpreter\FunctionValue.cs" />
+    <Compile Include="Interpreter\IntegralValue.cs" />
+    <Compile Include="Interpreter\LazyValue.cs" />
+    <Compile Include="Interpreter\NormalFormValue.cs" />
+    <Compile Include="Interpreter\TupleValue.cs" />
+    <Compile Include="Interpreter\Value.cs" />
+    <Compile Include="Interpreter\WeakHeadNormalFormValue.cs" />
+    <Compile Include="Parser\ApplicationExpression.cs" />
+    <Compile Include="Parser\CharacterExpression.cs" />
+    <Compile Include="Parser\ConditionalMatchCase.cs" />
+    <Compile Include="Parser\DataPattern.cs" />
+    <Compile Include="Parser\DataTypeConstructorDeclaration.cs" />
+    <Compile Include="Parser\DataTypeDeclarationExpression.cs" />
+    <Compile Include="Parser\DefClause.cs" />
+    <Compile Include="Parser\DefExpression.cs" />
+    <Compile Include="Parser\DefFunctionClause.cs" />
+    <Compile Include="Parser\DefInExpression.cs" />
+    <Compile Include="Parser\Expression.cs" />
+    <Compile Include="Parser\ExpressionDefaults.cs" />
+    <Compile Include="Parser\FloatingExpression.cs" />
+    <Compile Include="Parser\FunctionTypeClause.cs" />
+    <Compile Include="Parser\IfExpression.cs" />
+    <Compile Include="Parser\IntegralExpression.cs" />
+    <Compile Include="Parser\IntegralPattern.cs" />
+    <Compile Include="Parser\LambdaExpression.cs" />
+    <Compile Include="Parser\MatchCase.cs" />
+    <Compile Include="Parser\MatchExpression.cs" />
+    <Compile Include="Parser\NamedTypeClause.cs" />
+    <Compile Include="Parser\NamePattern.cs" />
+    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Parser\Pattern.cs" />
+    <Compile Include="Parser\Tokenizer.cs" />
+    <Compile Include="Parser\TupleExpression.cs" />
+    <Compile Include="Parser\TuplePattern.cs" />
+    <Compile Include="Parser\TupleTypeClause.cs" />
+    <Compile Include="Parser\TypeAnnotatedDefFunctionClause.cs" />
+    <Compile Include="Parser\TypeAnnotatedExpression.cs" />
+    <Compile Include="Parser\TypeAnnotatedPattern.cs" />
+    <Compile Include="Parser\TypeClause.cs" />
+    <Compile Include="Parser\VariableExpression.cs" />
+    <Compile Include="Parser\VariableTypeClause.cs" />
+    <Compile Include="Parser\WildcardPattern.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TypeSystem\CharacterType.cs" />
+    <Compile Include="TypeSystem\DataType.cs" />
+    <Compile Include="TypeSystem\FloatingType.cs" />
+    <Compile Include="TypeSystem\FunctionType.cs" />
+    <Compile Include="TypeSystem\IntegralType.cs" />
+    <Compile Include="TypeSystem\Substitution.cs" />
+    <Compile Include="TypeSystem\TupleType.cs" />
+    <Compile Include="TypeSystem\Type.cs" />
+    <Compile Include="TypeSystem\TypeDefaults.cs" />
+    <Compile Include="TypeSystem\TypePrettyPrinter.cs" />
+    <Compile Include="TypeSystem\TypeScheme.cs" />
+    <Compile Include="TypeSystem\TypeVariable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

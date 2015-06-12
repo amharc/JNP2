@@ -1,0 +1,30 @@
+﻿data Heap a
+	case Empty
+	case Heap of a (List (Heap a))
+
+def heap_link lhs rhs as
+	match (lhs, rhs)
+		with (Empty, rhs) then rhs
+		with (lhs, Empty) then lhs
+		with ((Heap lhsval lhschld), (Heap rhsval rhschld)) if lhsval < rhsval then
+			Heap lhsval (rhs :: lhschld)
+		with ((Heap lhsval lhschld), (Heap rhsval rhschld)) then
+			Heap rhsval (lhs :: rhschld)
+
+def heap_merge list as
+	match list
+		with Nil then Empty
+		with Cons heap Nil then heap
+		with Cons h1 (Cons h2 hs) then heap_link (heap_link h1 h2) (heap_merge hs)
+
+def heap_make x as Heap x Nil
+
+def heap_top heap as
+	match heap
+		with Heap val _ then val
+
+def heap_pop heap as
+	match heap
+		with Heap _ chld then heap_merge chld
+
+def heap_insert val heap as heap_link heap (heap_make val)
