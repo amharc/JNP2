@@ -18,7 +18,7 @@ namespace MobLang.TypeSystem
         public override Type RemoveRigids(Dictionary<TypeVariable, TypeVariable> dict)
         {
             var inner = Inner.RemoveRigids(dict);
-            // C# lacks return value contravariance (unlike Java), so an explicit cast is needed
+            // C# lacks return value covariance (unlike Java), so an explicit cast is needed
             return new TypeScheme(
                 new HashSet<TypeVariable>(Arguments.Select(x => (TypeVariable)x.RemoveRigids(dict))),
                 inner
